@@ -71,6 +71,7 @@ export default function Booking() {
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [confirmedClient, setConfirmedClient] = useState<ClientForm | null>(null);
 
   const {
     register,
@@ -168,6 +169,7 @@ export default function Booking() {
       });
       const data = await res.json();
       if (data.success) {
+        setConfirmedClient(formData);
         setSuccess(true);
       } else {
         setSubmitError(data.error || "Error al confirmar el turno. Intentá de nuevo.");
@@ -239,13 +241,15 @@ export default function Booking() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <button
-                onClick={() => openWhatsApp(getValues())}
-                className="flex items-center justify-center gap-2 bg-[#25D366] text-white px-7 py-3 rounded-full font-medium hover:bg-[#1ebe5d] transition-colors"
-              >
-                <MessageCircle className="w-4 h-4" />
-                Confirmar por WhatsApp
-              </button>
+              {confirmedClient && (
+                <button
+                  onClick={() => openWhatsApp(confirmedClient)}
+                  className="flex items-center justify-center gap-2 bg-[#25D366] text-white px-7 py-3 rounded-full font-medium hover:bg-[#1ebe5d] transition-colors"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  Confirmar por WhatsApp
+                </button>
+              )}
               <button
                 onClick={resetBooking}
                 className="bg-[#F8F5F0] text-[#6B705C] border border-[#6B705C]/30 px-7 py-3 rounded-full font-medium hover:bg-[#6B705C]/10 transition-colors"
