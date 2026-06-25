@@ -17,6 +17,7 @@ import {
   Loader2,
   AlertCircle,
   PartyPopper,
+  MessageCircle,
 } from "lucide-react";
 import SectionTitle from "@/components/ui/SectionTitle";
 import { professionals, services } from "@/lib/data";
@@ -122,6 +123,34 @@ export default function Booking() {
     if (step === 3) fetchSlots();
   }, [step, booking.professional, booking.service, booking.date]);
 
+  const openWhatsApp = (formData: ClientForm) => {
+    const pro = booking.professional;
+    const svc = booking.service;
+    if (!pro || !svc) return;
+
+    const dateStr = booking.date
+      ? new Date(`${booking.date}T12:00`).toLocaleDateString("es-AR", {
+          weekday: "long", day: "numeric", month: "long",
+        })
+      : "";
+
+    const lines = [
+      "🌿 *Nueva Reserva - Lumière Estética*",
+      "",
+      `👤 Cliente: ${formData.clientName}`,
+      `📱 Teléfono: ${formData.clientPhone}`,
+      `📧 Email: ${formData.clientEmail}`,
+      `✨ Servicio: ${svc.name}`,
+      `👩 Profesional: ${pro.name}`,
+      `📅 Fecha: ${dateStr}`,
+      `🕐 Hora: ${booking.time} hs`,
+    ];
+    if (formData.notes) lines.push(`📝 Notas: ${formData.notes}`);
+
+    const text = encodeURIComponent(lines.join("\n"));
+    window.open(`https://wa.me/5493425478170?text=${text}`, "_blank");
+  };
+
   const handleBook = async (formData: ClientForm) => {
     setSubmitting(true);
     setSubmitError("");
@@ -209,12 +238,21 @@ export default function Booking() {
               ))}
             </div>
 
-            <button
-              onClick={resetBooking}
-              className="bg-[#6B705C] text-white px-8 py-3 rounded-full font-medium hover:bg-[#5a5f4d] transition-colors"
-            >
-              Reservar otro turno
-            </button>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <button
+                onClick={() => openWhatsApp(getValues())}
+                className="flex items-center justify-center gap-2 bg-[#25D366] text-white px-7 py-3 rounded-full font-medium hover:bg-[#1ebe5d] transition-colors"
+              >
+                <MessageCircle className="w-4 h-4" />
+                Confirmar por WhatsApp
+              </button>
+              <button
+                onClick={resetBooking}
+                className="bg-[#F8F5F0] text-[#6B705C] border border-[#6B705C]/30 px-7 py-3 rounded-full font-medium hover:bg-[#6B705C]/10 transition-colors"
+              >
+                Reservar otro turno
+              </button>
+            </div>
           </motion.div>
         </div>
       </section>
