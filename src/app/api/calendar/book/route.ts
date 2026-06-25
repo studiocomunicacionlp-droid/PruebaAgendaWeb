@@ -31,12 +31,12 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Create calendar event if Google OAuth is configured
-    const session = await auth();
     let eventId: string | undefined;
 
-    if (session?.accessToken) {
-      try {
+    // Only try Google Calendar if OAuth is configured and user has a session
+    try {
+      const session = await auth();
+      if (session?.accessToken && process.env.GOOGLE_CLIENT_ID) {
         const event = await createCalendarEvent(
           session.accessToken,
           professional.calendarId,
@@ -53,22 +53,27 @@ export async function POST(req: NextRequest) {
           }
         );
         eventId = event.id || undefined;
-      } catch (calError) {
-        console.error("Google Calendar error (non-fatal):", calError);
-        // Continue even if calendar fails — email confirmation still sent
       }
+    } catch (calError) {
+      console.error("Google Calendar error (non-fatal):", calError);
     }
 
-    // Send confirmation email (non-blocking, errors are caught internally)
-    await sendBookingConfirmation({
-      clientEmail: data.clientEmail,
-      clientName: data.clientName,
-      serviceName: service.name,
-      professionalName: professional.name,
-      date: data.date,
-      time: data.time,
-      duration: service.duration,
-    });
+    // Only send email if SMTP is configured
+    if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+      try {
+        await sendBookingConfirmation({
+          clientEmail: data.clientEmail,
+          clientName: data.clientName,
+          serviceName: service.name,
+          professionalName: professional.name,
+          date: data.date,
+          time: data.time,
+          duration: service.duration,
+        });
+      } catch (emailError) {
+        console.error("Email error (non-fatal):", emailError);
+      }
+    }
 
     return NextResponse.json({
       success: true,
