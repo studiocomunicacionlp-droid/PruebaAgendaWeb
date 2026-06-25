@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 import { createCalendarEvent } from "@/lib/google-calendar";
 import { sendBookingConfirmation } from "@/lib/email";
+import { sendWhatsAppNotification } from "@/lib/whatsapp";
 import { professionals, services } from "@/lib/data";
+import { saveBooking, isSlotTaken } from "@/lib/bookings-store";
 import { z } from "zod";
 
 const bookingSchema = z.object({
@@ -31,9 +33,30 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Check if slot is already taken in our store
+    if (isSlotTaken(data.professionalId, data.date, data.time, service.duration)) {
+      return NextResponse.json(
+        { error: "Ese horario ya fue reservado. Por favor elegí otro." },
+        { status: 409 }
+      );
+    }
+
+    // Save booking to store immediately (blocks the slot)
+    saveBooking({
+      professionalId: data.professionalId,
+      serviceId: data.serviceId,
+      date: data.date,
+      time: data.time,
+      durationMin: service.duration,
+      clientName: data.clientName,
+      clientEmail: data.clientEmail,
+      clientPhone: data.clientPhone,
+      notes: data.notes,
+    });
+
     let eventId: string | undefined;
 
-    // Only try Google Calendar if OAuth is configured and user has a session
+    // Create Google Calendar event if configured
     try {
       const session = await auth();
       if (session?.accessToken && process.env.GOOGLE_CLIENT_ID) {
@@ -58,7 +81,20 @@ export async function POST(req: NextRequest) {
       console.error("Google Calendar error (non-fatal):", calError);
     }
 
-    // Only send email if SMTP is configured
+    // Send WhatsApp notification to the business
+    await sendWhatsAppNotification({
+      clientName: data.clientName,
+      clientPhone: data.clientPhone,
+      clientEmail: data.clientEmail,
+      serviceName: service.name,
+      professionalName: professional.name,
+      date: data.date,
+      time: data.time,
+      duration: service.duration,
+      notes: data.notes,
+    });
+
+    // Send confirmation email to client if SMTP is configured
     if (process.env.SMTP_USER && process.env.SMTP_PASS) {
       try {
         await sendBookingConfirmation({
