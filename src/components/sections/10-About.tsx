@@ -11,8 +11,10 @@ export default function About() {
       <Container className="relative grid items-center gap-10 md:grid-cols-[280px_1fr] md:gap-14">
         <AnimatedSection direction="left">
           <PhotoFrame
+            src="/images/lucia-2.jpg"
             alt="Lucía Paz"
             className="mx-auto aspect-[4/5] w-full max-w-xs border-4 border-cream/10 md:mx-0"
+            imgClassName="object-[45%_20%]"
           />
         </AnimatedSection>
 

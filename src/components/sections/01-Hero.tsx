@@ -58,8 +58,10 @@ export default function Hero() {
           <div className="relative mx-auto w-full max-w-xs lg:max-w-sm">
             <div className="pointer-events-none absolute -inset-4 -z-10 rounded-[2.5rem] bg-rose-strong/20 blur-2xl" />
             <PhotoFrame
+              src="/images/lucia-1.jpg"
               alt="Lucía Paz"
               className="aspect-[4/5] w-full border-4 border-cream/10"
+              imgClassName="object-[50%_25%]"
             />
           </div>
         </AnimatedSection>
