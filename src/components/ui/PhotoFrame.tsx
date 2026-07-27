@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { cn, withBasePath } from "@/lib/utils";
 
 interface PhotoFrameProps {
   src?: string;
@@ -23,7 +23,7 @@ export default function PhotoFrame({
     >
       {src ? (
         <Image
-          src={src}
+          src={withBasePath(src)}
           alt={alt}
           fill
           className={cn("object-cover", imgClassName)}
