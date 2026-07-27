@@ -13,11 +13,18 @@ import Container from "@/components/ui/Container";
 import Eyebrow from "@/components/ui/Eyebrow";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 
-const METHOD_INCLUDES = [
+const LIBRE_INCLUDES = [
   "Diagnóstico de tu venta actual",
   "Implementación a medida",
   "Manual de criterio",
   "3 videos tutoriales",
+  "1 mes de acompañamiento",
+];
+
+const IMPACTO_INCLUDES = [
+  "Diagnóstico de tu venta actual",
+  "Implementación a medida",
+  "Manual de criterio",
   "1 mes de acompañamiento",
 ];
 
@@ -59,7 +66,7 @@ export default function Method() {
                 </p>
               </div>
               <ul className="space-y-2">
-                {METHOD_INCLUDES.map((item) => (
+                {LIBRE_INCLUDES.map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
                     <Check
                       className="mt-0.5 h-4 w-4 shrink-0 text-rose-strong"
@@ -95,7 +102,7 @@ export default function Method() {
                 </p>
               </div>
               <ul className="space-y-2">
-                {METHOD_INCLUDES.map((item) => (
+                {IMPACTO_INCLUDES.map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
                     <Check
                       className="mt-0.5 h-4 w-4 shrink-0 text-rose-light"

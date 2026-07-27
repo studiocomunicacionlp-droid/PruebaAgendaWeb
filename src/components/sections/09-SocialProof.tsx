@@ -1,8 +1,7 @@
 import Container from "@/components/ui/Container";
 import Eyebrow from "@/components/ui/Eyebrow";
 import AnimatedSection from "@/components/ui/AnimatedSection";
-
-const CASES = ["Huele a Brujas", "Pink Beauty", "Lumiere", "Amora"];
+import { TRUSTED_BRANDS } from "@/lib/brands";
 
 export default function SocialProof() {
   return (
@@ -20,7 +19,7 @@ export default function SocialProof() {
         </AnimatedSection>
 
         <div className="mt-8 flex flex-wrap gap-4">
-          {CASES.map((brand, i) => (
+          {TRUSTED_BRANDS.map((brand, i) => (
             <AnimatedSection key={brand} delay={0.15 + i * 0.06}>
               <span className="inline-block rounded-2xl border-2 border-rose bg-rose-light/30 px-6 py-4 font-script text-2xl text-wine">
                 {brand}

@@ -55,6 +55,13 @@ export default function About() {
           </AnimatedSection>
 
           <AnimatedSection delay={0.4}>
+            <p className="mt-4 text-balance text-lg leading-relaxed text-cream/90 sm:text-xl">
+              Pero lo más importante es que vengo a recordarte lo esencial:
+              que sos libre.
+            </p>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.5}>
             <p className="mt-7 font-script text-4xl text-rose-light">
               Sos Libre.
             </p>
