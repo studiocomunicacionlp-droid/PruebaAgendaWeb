@@ -10,22 +10,34 @@ import {
   Headset,
 } from "lucide-react";
 import Container from "@/components/ui/Container";
+import CTAButton from "@/components/ui/CTAButton";
 import Eyebrow from "@/components/ui/Eyebrow";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import { WHATSAPP_MESSAGES, whatsappLink } from "@/lib/whatsapp";
 
 const LIBRE_INCLUDES = [
+  "Llamada de primer acercamiento + formulario de relevamiento",
   "Diagnóstico de tu venta actual",
-  "Implementación a medida",
+  "Implementación de tu tienda a medida",
   "Manual de criterio",
-  "3 videos tutoriales",
-  "1 mes de acompañamiento",
+  "3 videos tutoriales: cómo cargar productos, cómo modificar el diseño, cómo conectar el medio de pago",
+  "1 mes de acompañamiento por WhatsApp para dudas de uso (horario laboral, 9 a 18hs)",
 ];
 
 const IMPACTO_INCLUDES = [
-  "Diagnóstico de tu venta actual",
-  "Implementación a medida",
-  "Manual de criterio",
-  "1 mes de acompañamiento",
+  "Llamada de primer acercamiento + formulario de relevamiento",
+  "Diagnóstico de tu oferta y cómo comunicarla mejor",
+  "Landing individual a medida, mobile-first, con estructura de venta completa: hero, punto A, punto B, método, beneficios, prueba social y cierre",
+  "Manual de criterio para mantenerla vos misma",
+  "3 videos tutoriales (los mismos que Libre, adaptados a landing)",
+  "1 mes de acompañamiento por WhatsApp",
+];
+
+const SHARED = [
+  "Trabajo 100% 1:1, sin plantillas",
+  "Pago en cuotas: 50% al inicio, 50% a la entrega",
+  "Cambios de diseño post-entrega quedan fuera del acompañamiento (solo dudas de uso)",
+  "Bono de lanzamiento incluido: kit de arranque de contenido (plantillas de Canva)",
 ];
 
 const PROCESS = [
@@ -52,7 +64,7 @@ export default function Method() {
           </p>
         </AnimatedSection>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 md:items-stretch">
           <AnimatedSection direction="left" delay={0.15}>
             <div className="flex h-full flex-col gap-5 rounded-3xl border-2 border-rose bg-rose-light/40 p-7">
               <ShoppingBag className="h-8 w-8 text-rose-strong" strokeWidth={1.75} />
@@ -76,14 +88,32 @@ export default function Method() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-auto border-t border-rose pt-4">
+              <div className="mt-auto space-y-3 border-t border-rose pt-4">
                 <p className="text-xs uppercase tracking-[0.15em] text-wine/70">
                   Precio de lanzamiento
                 </p>
-                <p className="font-heading text-2xl font-extrabold text-wine">
-                  Desde $250.000
-                </p>
-                <p className="text-xs text-ink/60">Varía según cantidad de productos</p>
+                <div>
+                  <p className="font-heading text-xl font-extrabold text-wine">
+                    $250.000 – $350.000
+                  </p>
+                  <p className="text-xs text-ink/60">
+                    Tiendas chicas (5–10 productos)
+                  </p>
+                </div>
+                <div>
+                  <p className="font-heading text-xl font-extrabold text-wine">
+                    $350.000 – $500.000
+                  </p>
+                  <p className="text-xs text-ink/60">
+                    Tiendas con más carga (20+ productos)
+                  </p>
+                </div>
+                <CTAButton
+                  href={whatsappLink(WHATSAPP_MESSAGES.libre)}
+                  className="w-full"
+                >
+                  Quiero mi tienda
+                </CTAButton>
               </div>
             </div>
           </AnimatedSection>
@@ -112,17 +142,46 @@ export default function Method() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-auto border-t border-cream/20 pt-4">
+              <div className="mt-auto space-y-3 border-t border-cream/20 pt-4">
                 <p className="text-xs uppercase tracking-[0.15em] text-rose-light/80">
                   Precio de lanzamiento
                 </p>
-                <p className="font-heading text-2xl font-extrabold text-cream">
-                  Desde $150.000
-                </p>
+                <div>
+                  <p className="font-heading text-xl font-extrabold text-cream">
+                    $150.000 – $250.000
+                  </p>
+                  <p className="text-xs text-cream/60">Según complejidad</p>
+                </div>
+                <CTAButton
+                  href={whatsappLink(WHATSAPP_MESSAGES.impacto)}
+                  variant="outline"
+                  className="w-full border-cream/40 text-cream hover:bg-cream hover:text-wine"
+                >
+                  Quiero mi landing
+                </CTAButton>
               </div>
             </div>
           </AnimatedSection>
         </div>
+
+        <AnimatedSection delay={0.25}>
+          <div className="mt-8 rounded-3xl bg-rose-light/40 p-7">
+            <p className="font-heading text-sm font-bold uppercase tracking-[0.15em] text-wine">
+              En ambos casos
+            </p>
+            <ul className="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+              {SHARED.map((item) => (
+                <li key={item} className="flex items-start gap-2.5">
+                  <Check
+                    className="mt-0.5 h-4 w-4 shrink-0 text-rose-strong"
+                    strokeWidth={2.5}
+                  />
+                  <span className="text-sm text-ink/80">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </AnimatedSection>
 
         <AnimatedSection delay={0.3}>
           <p className="mx-auto mt-14 max-w-lg text-center font-script text-3xl text-wine sm:text-4xl">
