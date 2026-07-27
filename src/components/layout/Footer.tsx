@@ -1,6 +1,6 @@
 import { Instagram } from "lucide-react";
 import Container from "@/components/ui/Container";
-import { WHATSAPP_MESSAGES, whatsappLink } from "@/lib/whatsapp";
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/social";
 
 export default function Footer() {
   return (
@@ -13,7 +13,7 @@ export default function Footer() {
         </p>
         <div className="flex items-center gap-4">
           <a
-            href="https://instagram.com/luciapaz.digital"
+            href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="flex h-10 w-10 items-center justify-center rounded-full border border-cream/20 transition-colors hover:border-rose-strong hover:text-rose-light"
@@ -22,12 +22,12 @@ export default function Footer() {
             <Instagram className="h-5 w-5" />
           </a>
           <a
-            href={whatsappLink(WHATSAPP_MESSAGES.general)}
+            href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-semibold underline decoration-rose-strong decoration-2 underline-offset-4 transition-colors hover:text-rose-light"
           >
-            @luciapaz.digital
+            {INSTAGRAM_HANDLE}
           </a>
         </div>
         <p className="text-xs text-cream/40">

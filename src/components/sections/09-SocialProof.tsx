@@ -1,4 +1,3 @@
-import { Quote } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Eyebrow from "@/components/ui/Eyebrow";
 import AnimatedSection from "@/components/ui/AnimatedSection";
@@ -29,20 +28,6 @@ export default function SocialProof() {
             </AnimatedSection>
           ))}
         </div>
-
-        <AnimatedSection delay={0.4}>
-          <div className="mt-10 rounded-3xl border-2 border-dashed border-rose bg-rose-light/20 p-7 sm:p-9">
-            <Quote className="h-8 w-8 text-rose-strong" strokeWidth={1.5} />
-            <p className="mt-3 font-heading text-lg font-semibold text-wine">
-              Testimonios de esta edición de lanzamiento — muy pronto
-            </p>
-            <p className="mt-2 max-w-xl text-ink/70">
-              Cada clienta nueva cuenta, con las mismas preguntas fijas: cómo
-              era su Punto A y cómo es su día ahora. Capturas reales de
-              WhatsApp incluidas.
-            </p>
-          </div>
-        </AnimatedSection>
       </Container>
     </section>
   );

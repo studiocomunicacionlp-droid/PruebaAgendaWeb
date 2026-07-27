@@ -1,7 +1,8 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
+import InstagramFloat from "@/components/ui/InstagramFloat";
 import Hero from "@/components/sections/01-Hero";
+import TrustedBrands from "@/components/sections/01a-TrustedBrands";
 import ProblemPointA from "@/components/sections/02-ProblemPointA";
 import WhyNotWorked from "@/components/sections/03-WhyNotWorked";
 import PointB from "@/components/sections/04-PointB";
@@ -20,6 +21,7 @@ export default function Home() {
     <main className="min-h-screen bg-cream">
       <Navbar />
       <Hero />
+      <TrustedBrands />
       <ProblemPointA />
       <WhyNotWorked />
       <PointB />
@@ -33,7 +35,7 @@ export default function Home() {
       <FinalCTA />
       <OfferSummary />
       <Footer />
-      <WhatsAppFloat />
+      <InstagramFloat />
     </main>
   );
 }

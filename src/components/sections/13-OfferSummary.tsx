@@ -1,8 +1,6 @@
 import { Check } from "lucide-react";
 import Container from "@/components/ui/Container";
-import CTAButton from "@/components/ui/CTAButton";
 import AnimatedSection from "@/components/ui/AnimatedSection";
-import { WHATSAPP_MESSAGES, whatsappLink } from "@/lib/whatsapp";
 
 const INCLUDES = [
   "Tienda online o landing a medida (Método Libre o Método Impacto)",
@@ -46,16 +44,11 @@ export default function OfferSummary() {
           </AnimatedSection>
 
           <AnimatedSection delay={0.3}>
-            <div className="mt-8 flex flex-col items-start justify-between gap-6 border-t border-rose-light pt-6 sm:flex-row sm:items-center">
-              <div>
-                <p className="font-heading text-lg font-bold text-wine">
-                  Precio de lanzamiento
-                </p>
-                <p className="text-sm text-ink/60">Cupos: 5</p>
-              </div>
-              <CTAButton href={whatsappLink(WHATSAPP_MESSAGES.final)}>
-                Quiero mi web
-              </CTAButton>
+            <div className="mt-8 border-t border-rose-light pt-6">
+              <p className="font-heading text-lg font-bold text-wine">
+                Precio de lanzamiento
+              </p>
+              <p className="text-sm text-ink/60">Cupos: 5</p>
             </div>
           </AnimatedSection>
         </div>

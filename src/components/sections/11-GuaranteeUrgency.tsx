@@ -10,14 +10,11 @@ export default function GuaranteeUrgency() {
           <div className="flex h-full flex-col gap-4 rounded-3xl bg-cream/5 p-7">
             <Timer className="h-8 w-8 text-rose-light" strokeWidth={1.75} />
             <h3 className="font-heading text-xl font-bold">
-              Urgencia real, no forzada
+              Urgencia real
             </h3>
             <p className="text-cream/75">
-              Precio de lanzamiento, con cupo limitado a{" "}
-              <span className="font-semibold text-rose-light">
-                5 lugares
-              </span>
-              . Cuando se completen, esta edición cierra.
+              Precio de lanzamiento, solo{" "}
+              <span className="font-semibold text-rose-light">5 cupos</span>.
             </p>
           </div>
         </AnimatedSection>
