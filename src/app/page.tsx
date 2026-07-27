@@ -1,6 +1,6 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import InstagramFloat from "@/components/ui/InstagramFloat";
+import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
 import Hero from "@/components/sections/01-Hero";
 import TrustedBrands from "@/components/sections/01a-TrustedBrands";
 import ProblemPointA from "@/components/sections/02-ProblemPointA";
@@ -35,7 +35,7 @@ export default function Home() {
       <FinalCTA />
       <OfferSummary />
       <Footer />
-      <InstagramFloat />
+      <WhatsAppFloat />
     </main>
   );
 }
