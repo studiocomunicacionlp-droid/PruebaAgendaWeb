@@ -1,27 +1,39 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import Hero from "@/components/sections/Hero";
-import Benefits from "@/components/sections/Benefits";
-import Services from "@/components/sections/Services";
-import About from "@/components/sections/About";
-import Team from "@/components/sections/Team";
-import Testimonials from "@/components/sections/Testimonials";
-import Gallery from "@/components/sections/Gallery";
-import Booking from "@/components/sections/Booking";
+import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
+import Hero from "@/components/sections/01-Hero";
+import ProblemPointA from "@/components/sections/02-ProblemPointA";
+import WhyNotWorked from "@/components/sections/03-WhyNotWorked";
+import PointB from "@/components/sections/04-PointB";
+import Method from "@/components/sections/05-Method";
+import Results from "@/components/sections/06-Results";
+import Program from "@/components/sections/07-Program";
+import Bonus from "@/components/sections/08-Bonus";
+import SocialProof from "@/components/sections/09-SocialProof";
+import About from "@/components/sections/10-About";
+import GuaranteeUrgency from "@/components/sections/11-GuaranteeUrgency";
+import FinalCTA from "@/components/sections/12-FinalCTA";
+import OfferSummary from "@/components/sections/13-OfferSummary";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#F8F5F0]">
+    <main className="min-h-screen bg-cream">
       <Navbar />
       <Hero />
-      <Benefits />
-      <Services />
+      <ProblemPointA />
+      <WhyNotWorked />
+      <PointB />
+      <Method />
+      <Results />
+      <Program />
+      <Bonus />
+      <SocialProof />
       <About />
-      <Team />
-      <Testimonials />
-      <Gallery />
-      <Booking />
+      <GuaranteeUrgency />
+      <FinalCTA />
+      <OfferSummary />
       <Footer />
+      <WhatsAppFloat />
     </main>
   );
 }

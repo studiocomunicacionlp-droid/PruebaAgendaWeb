@@ -9,32 +9,38 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "#6B705C",
-        secondary: "#DDBEA9",
-        tertiary: "#A98467",
-        background: "#F8F5F0",
-        "text-main": "#3A3A3A",
+        rose: {
+          light: "#FBE4EA",
+          DEFAULT: "#E9A8BE",
+          medium: "#DE7CA0",
+          strong: "#C23A6B",
+        },
+        wine: {
+          DEFAULT: "#5C1832",
+          dark: "#3D0F21",
+        },
+        ink: "#1B1417",
+        cream: "#FFF9F6",
       },
       fontFamily: {
-        playfair: ["'Playfair Display'", "serif"],
-        cormorant: ["'Cormorant Garamond'", "serif"],
-        inter: ["'Inter'", "sans-serif"],
+        heading: ["var(--font-poppins)", "sans-serif"],
+        script: ["var(--font-caveat)", "cursive"],
       },
       animation: {
-        "fade-in": "fadeIn 0.5s ease-in-out",
-        "slide-up": "slideUp 0.6s ease-out",
-        float: "float 6s ease-in-out infinite",
+        "fade-in": "fadeIn 0.6s ease-out",
+        float: "float 7s ease-in-out infinite",
+        "float-slow": "float 10s ease-in-out infinite",
       },
       keyframes: {
         fadeIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
-        slideUp: {
-          "0%": { transform: "translateY(30px)", opacity: "0" },
-          "100%": { transform: "translateY(0)", opacity: "1" },
-        },
         float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
+          "0%, 100%": { transform: "translateY(0) rotate(0deg)" },
+          "50%": { transform: "translateY(-14px) rotate(2deg)" },
         },
+      },
+      boxShadow: {
+        soft: "0 20px 60px -15px rgba(92, 24, 50, 0.25)",
+        card: "0 10px 30px -10px rgba(27, 20, 23, 0.15)",
       },
     },
   },
