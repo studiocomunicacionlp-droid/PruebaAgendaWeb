@@ -61,7 +61,7 @@ export default function Hero() {
               src="/images/lucia-1.jpg"
               alt="Lucía Paz"
               className="aspect-[4/5] w-full border-4 border-cream/10"
-              imgClassName="object-[50%_25%]"
+              imgClassName="object-bottom"
             />
           </div>
         </AnimatedSection>

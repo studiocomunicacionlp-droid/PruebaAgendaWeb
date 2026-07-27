@@ -14,7 +14,7 @@ export default function About() {
             src="/images/lucia-2.jpg"
             alt="Lucía Paz"
             className="mx-auto aspect-[4/5] w-full max-w-xs border-4 border-cream/10 md:mx-0"
-            imgClassName="object-[45%_20%]"
+            imgClassName="object-bottom"
           />
         </AnimatedSection>
 
