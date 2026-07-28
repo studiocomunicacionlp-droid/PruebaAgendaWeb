@@ -94,19 +94,15 @@ export default function Method() {
                 </p>
                 <div>
                   <p className="font-heading text-xl font-extrabold text-wine">
-                    $250.000 – $350.000
+                    $250.000
                   </p>
-                  <p className="text-xs text-ink/60">
-                    Tiendas chicas (5–10 productos)
-                  </p>
+                  <p className="text-xs text-ink/60">Hasta 10 productos</p>
                 </div>
                 <div>
                   <p className="font-heading text-xl font-extrabold text-wine">
-                    $350.000 – $500.000
+                    $330.000
                   </p>
-                  <p className="text-xs text-ink/60">
-                    Tiendas con más carga (20+ productos)
-                  </p>
+                  <p className="text-xs text-ink/60">Hasta 30 productos</p>
                 </div>
                 <CTAButton
                   href={whatsappLink(WHATSAPP_MESSAGES.libre)}
@@ -148,9 +144,8 @@ export default function Method() {
                 </p>
                 <div>
                   <p className="font-heading text-xl font-extrabold text-cream">
-                    $150.000 – $250.000
+                    $180.000
                   </p>
-                  <p className="text-xs text-cream/60">Según complejidad</p>
                 </div>
                 <CTAButton
                   href={whatsappLink(WHATSAPP_MESSAGES.impacto)}
